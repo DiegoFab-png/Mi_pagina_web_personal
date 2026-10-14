@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario | Diego Guevara - Portafolio Estudiantil</title>
+    <link rel="icon" type="image/x-icon" href="img/logo.ico">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <aside id="sidebar">
+        <!-- BOTÓN PEGADO AL BORDE DEL MENÚ -->
+        <button id="toggleSidebar" class="btn-toggle-sidebar" title="Ocultar/Mostrar menú">
+            <i class="fa-solid fa-chevron-left" id="toggleIcon"></i>
+        </button>
+
+        <h2><i class="fa-solid fa-user-graduate"></i> Diego Guevara</h2>
+        <nav>
+            <a href="index.html"><i class="fa-solid fa-house"></i> Inicio</a>
+            <a href="sobre.html"><i class="fa-solid fa-address-card"></i> Sobre mí</a>
+            <a href="proyectos.html"><i class="fa-solid fa-laptop-code"></i> Proyectos</a>
+            <a href="formulario.html" class="active"><i class="fa-solid fa-file-lines"></i> Formulario</a>
+            <a href="blog.html"><i class="fa-solid fa-blog"></i> Blog</a>
+            <a href="galeria.html"><i class="fa-solid fa-image"></i> Galería</a>
+            <a href="contacto.html"><i class="fa-solid fa-envelope"></i> Contacto</a>
+        </nav>
+    </aside>
+
+    <!-- AQUÍ SE AGREGA id="mainContent" PARA QUE FUNCIONE EL DESPLIEGUE CON JS -->
+    <div class="content" id="mainContent">
+        <header class="scroll-animate">
+            <h1><i class="fa-solid fa-clipboard-list"></i> FORMULARIO</h1>
+            <p>Ficha Registral de Estudiantes - Fundamentos de Desarrollo Web</p>
+        </header>
+
+        <main class="scroll-animate">
+            <form action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data" autocomplete="on">
+                <input type="hidden" name="access_key" value="889a12b8-3303-44fc-847b-a5efa166cd08">
+                <input type="hidden" name="subject" value="Nueva Ficha Registral de Estudiante - IESP Republica Federal de Alemania">
+                
+                <fieldset class="anim-zoom-float led-border" id="section1">
+                    <legend><i class="fa-solid fa-user"></i> 1. Datos Personales del Postulante</legend>
+                    <div class="form-group-inline">
+                        <div class="form-group">
+                            <label for="nombres" class="required">Nombres Completos:</label>
+                            <input type="text" id="nombres" name="nombres" placeholder="Ej. Diego Fabricio" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="apellidos" class="required">Apellidos Completos:</label>
+                            <input type="text" id="apellidos" name="apellidos" placeholder="Ej. Guevara Deza" required>
+                        </div>
+                    </div>
+                    <div class="form-group-inline">
+                        <div class="form-group">
+                            <label for="dni" class="required">DNI / Documento:</label>
+                            <input type="text" id="dni" name="dni" placeholder="8 dígitos" pattern="[0-9]{8}" maxlength="8" required title="Ingrese exactamente 8 números enteros.">
+                        </div>
+                        <div class="form-group">
+                            <label for="fecha_nac" class="required">Fecha de Nacimiento:</label>
+                            <input type="date" id="fecha_nac" name="fecha_nac" min="1950-01-01" max="2010-12-31" required>
+                        </div>
+                    </div>
+                    <div class="form-group-inline">
+                        <div class="form-group">
+                            <label for="correo" class="required">Correo Electrónico:</label>
+                            <input type="email" id="correo" name="email" placeholder="DiegoGZA@gmail.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono">Teléfono / Celular:</label>
+                            <input type="tel" id="telefono" name="telefono" placeholder="998545874" pattern="[0-9]{9}" maxlength="9">
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="anim-zoom-float led-border" id="section2">
+                    <legend><i class="fa-solid fa-graduation-cap"></i> 2. Información Académica</legend>
+                    <div class="form-group">
+                        <label for="programa" class="required">Programa de Estudio:</label>
+                        <select id="programa" name="programa" required>
+                            <option value="" disabled selected>--Seleccione una Especialidad--</option>
+                            <optgroup label="Tecnología de la Información">
+                                <option value="ATI">Arquitectura de Plataformas y Servicios de TI</option>
+                                <option value="DS">Computación e Informática</option>
+                            </optgroup>
+                            <optgroup label="Otras Carreras Técnicas">
+                                <option value="ADM">Administración de Empresas</option>
+                                <option value="CONT">Contabilidad</option>
+                                <option value="ETE">Enfermería Técnica</option>
+                                <option value="ELI">Electricidad Industrial</option>
+                                <option value="ELO">Electrónica Industrial</option>
+                                <option value="MEC">Mecánica Automotriz</option>
+                                <option value="MEP">Mecánica de Producción</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="distrito">Distrito de Procedencia:</label>
+                        <input type="text" id="distrito" name="distrito" list="distritos-chiclayo" placeholder="Escriba para buscar su distrito...">
+                        <datalist id="distritos-chiclayo">
+                            <option value="Chiclayo">
+                            <option value="José Leonardo Ortiz">
+                            <option value="La Victoria">
+                            <option value="Pimentel">
+                            <option value="Monsefú">
+                            <option value="Mochumí">
+                            <option value="Lambayeque">
+                        </datalist>
+                    </div>
+                    <div class="form-group">
+                        <label class="required">Turno de Preferencia:</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="turno" value="Mañana" required> Mañana</label>
+                            <label><input type="radio" name="turno" value="Noche" required> Noche</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Áreas de Interés Técnico:</label>
+                        <div class="checkbox_group">
+                            <label><input type="checkbox" name="interes[]" value="Desarrollo Frontend"> Desarrollo Frontend</label>
+                            <label><input type="checkbox" name="interes[]" value="Programación Backend"> Programación Backend</label>
+                            <label><input type="checkbox" name="interes[]" value="Redes y Servidores"> Redes y Servidores</label>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="anim-zoom-float led-border" id="section3">
+                    <legend><i class="fa-solid fa-file-signature"></i> 3. Documentación y Mensaje</legend>
+                    <div class="form-group">
+                        <label for="observaciones">Observaciones o Comentarios Adicionales:</label>
+                        <textarea id="observaciones" name="mensaje" rows="4" placeholder="Ingrese alguna especificación o consulta para la secretaría académica..."></textarea>
+                    </div>
+                </fieldset>
+
+                <div class="button-group">
+                    <button type="reset" class="btn btn-reset">
+                        <i class="fa-solid fa-rotate-left"></i> Restablecer Campos
+                    </button>
+                    <button type="submit" class="btn btn-submit">
+                        <i class="fa-solid fa-paper-plane"></i> Enviar Formulario
+                    </button>
+                </div>
+            </form>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Diego Guevara - Derechos reservados.</p>
+        </footer>
+    </div>
+
+    <script>
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('visible'); }
+                else { entry.target.classList.remove('visible'); }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.scroll-animate').forEach(el => { observer.observe(el); });
+
+        // Lógica para Ocultar / Mostrar la Barra Lateral
+        const toggleBtn = document.getElementById('toggleSidebar');
+        const sidebar = document.getElementById('sidebar');
+        const content = document.getElementById('mainContent');
+        const toggleIcon = document.getElementById('toggleIcon');
+
+        toggleBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('collapsed');
+            content.classList.toggle('expanded');
+            
+            // Cambia el icono de la flecha dependiendo de si está oculto o desplegado
+            if (sidebar.classList.contains('collapsed')) {
+                toggleIcon.className = 'fa-solid fa-chevron-right';
+            } else {
+                toggleIcon.className = 'fa-solid fa-chevron-left';
+            }
+        });
+    </script>
+</body>
+</html>

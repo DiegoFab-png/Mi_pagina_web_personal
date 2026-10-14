@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog e información personal de Anghelo Rico.">
+    <title>Blog | Diego Guevara</title>
+    
+    <link rel="icon" type="image/x-icon" href="img/logo.ico">
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <aside id="sidebar">
+        <!-- BOTÓN PEGADO AL BORDE DEL MENÚ -->
+        <button id="toggleSidebar" class="btn-toggle-sidebar" title="Ocultar/Mostrar menú">
+            <i class="fa-solid fa-chevron-left" id="toggleIcon"></i>
+        </button>
+
+        <h2><i class="fa-solid fa-user-graduate"></i> Diego Guevara</h2>
+        <nav>
+            <a href="index.html"><i class="fa-solid fa-house"></i> Inicio</a>
+            <a href="sobre.html"><i class="fa-solid fa-address-card"></i> Sobre mí</a>
+            <a href="proyectos.html"><i class="fa-solid fa-laptop-code"></i> Proyectos</a>
+            <a href="formulario.html"><i class="fa-solid fa-file-lines"></i> Formulario</a>
+            <a href="blog.html" class="active"><i class="fa-solid fa-blog"></i> Blog</a>
+            <a href="galeria.html"><i class="fa-solid fa-image"></i> Galería</a>
+            <a href="contacto.html"><i class="fa-solid fa-envelope"></i> Contacto</a>
+        </nav>
+    </aside>
+
+    <div class="content" id="mainContent">
+        <header class="scroll-animate">
+            <h1><i class="fa-solid fa-blog"></i> Mi Blog</h1>
+            <p>Información personal y detalles académicos</p>
+        </header>
+
+        <main class="scroll-animate">
+            <div class="info-table">
+                <div class="info-row">
+                    <div class="cabeza"><i class="fa-solid fa-user"></i> Nombre</div>
+                    <div class="info-content">Diego Fabricio</div>
+                </div>
+                <div class="info-row">
+                    <div class="cabeza"><i class="fa-solid fa-id-badge"></i> Apellidos</div>
+                    <div class="info-content">Guevara Deza</div>
+                </div>
+                <div class="info-row">
+                    <div class="cabeza"><i class="fa-solid fa-layer-group"></i> Ciclo</div>
+                    <div class="info-content">4to Ciclo - Turno Mañana</div>
+                </div>
+                <div class="info-row">
+                    <div class="cabeza"><i class="fa-solid fa-building-columns"></i> Instituto</div>
+                    <div class="info-content">Instituto de Educación Superior Rep. Federal de Alemania</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-content">
+                        <div class="img-container">
+                            <img src="img/retrato_04_ejecutivo.png" alt="Foto personal de Anghelo Rico - Click para ampliar" class="blog-img" id="profileImg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Diego Guevara - Derechos reservados.</p>
+        </footer>
+    </div>
+    
+    <div class="modal" id="imageModal">
+        <div class="modal-content">
+            <div class="close-btn" id="closeBtn">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+            <img src="img/yo.jpg" alt="Anghelo Rico - Vista ampliada" class="modal-img" id="modalImg">
+            <div class="close-text">Presiona ESC o haz click fuera para cerrar</div>
+        </div>
+    </div>
+
+    <script>
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('visible'); }
+                else { entry.target.classList.remove('visible'); }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.scroll-animate').forEach(el => { observer.observe(el); });
+
+        const modal = document.getElementById('imageModal');
+        const profileImg = document.getElementById('profileImg');
+        const closeBtn = document.getElementById('closeBtn');
+        const modalImg = document.getElementById('modalImg');
+
+        profileImg.addEventListener('click', function() {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeBtn.addEventListener('click', function() {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+                // Lógica para Ocultar / Mostrar la Barra Lateral
+        const toggleBtn = document.getElementById('toggleSidebar');
+        const sidebar = document.getElementById('sidebar');
+        const content = document.getElementById('mainContent');
+        const toggleIcon = document.getElementById('toggleIcon');
+
+        toggleBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('collapsed');
+            content.classList.toggle('expanded');
+            
+            // Cambia el icono de la flecha dependiendo de si está oculto o desplegado
+            if (sidebar.classList.contains('collapsed')) {
+                toggleIcon.className = 'fa-solid fa-chevron-right';
+            } else {
+                toggleIcon.className = 'fa-solid fa-chevron-left';
+            }
+        });
+    </script>
+</body>
+</html>

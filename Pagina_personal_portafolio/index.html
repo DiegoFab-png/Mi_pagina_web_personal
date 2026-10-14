@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sitio web personal y portafolio profesional de Anghelo Rico.">
+    <meta name="keywords" content="Anghelo Rico, Estudiante, Portafolio, Desarrollo Web">
+    <title>Inicio | Diego Guevara - Portafolio Estudiantil</title>
+    
+    <link rel="icon" type="image/x-icon" href="img/logo.ico">
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <aside id="sidebar">
+        <!-- BOTÓN PEGADO AL BORDE DEL MENÚ -->
+        <button id="toggleSidebar" class="btn-toggle-sidebar" title="Ocultar/Mostrar menú">
+            <i class="fa-solid fa-chevron-left" id="toggleIcon"></i>
+        </button>
+
+        <h2><i class="fa-solid fa-user-graduate"></i> Diego Guevara</h2>
+        <nav>
+            <a href="index.html" class="active"><i class="fa-solid fa-house"></i> Inicio</a>
+            <a href="sobre.html"><i class="fa-solid fa-address-card"></i> Sobre mí</a>
+            <a href="proyectos.html"><i class="fa-solid fa-laptop-code"></i> Proyectos</a>
+            <a href="formulario.html"><i class="fa-solid fa-file-lines"></i> Formulario</a>
+            <a href="blog.html"><i class="fa-solid fa-blog"></i> Blog</a>
+            <a href="galeria.html"><i class="fa-solid fa-image"></i> Galería</a>
+            <a href="contacto.html"><i class="fa-solid fa-envelope"></i> Contacto</a>
+        </nav>
+    </aside>
+    
+    <div class="content" id="mainContent">
+        <header class="scroll-animate">
+            <h1>¡BIENVENIDO A MI PORTAFOLIO!</h1>
+            <p>Estudiante | Desarrollador | Comprometido</p>
+        </header>
+        
+        <main class="scroll-animate">
+            <h2><i class="fa-solid fa-handshake"></i> Bienvenido</h2>
+            <p>Hola, soy <strong>Diego Guevara</strong>. Este espacio a sido diseñado para compartir mis logros académicos, explorando la intersección entre la tecnología, el diseño y la innovación.</p>
+            
+            <h3><i class="fa-solid fa-bullseye"></i> Propósito del Sitio</h3>
+            <ul>
+                <li>Compartir mis proyectos y trabajos realizados durante mis estudios.</li>
+                <li>Mostrar mis conocimientos y habilidades en programación y desarrollo web.</li>
+                <li>Aprender y mejorar mis conocimientos en tecnología y sistemas.</li>
+            </ul>
+            
+            <div class="media-container">
+                <div class="imagen-wrapper">
+                    <img src="https://picsum.photos/800/400" alt="Imagen ilustrativa de proyectos tecnológicos" class="imagen-3d">
+                </div>
+                <div class="audio-wrapper">
+                    <p><i class="fa-solid fa-music"></i> Banda sonora de trabajo</p>
+                    <audio controls>
+                        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                        Tu navegador no soporta el elemento de audio.
+                    </audio>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>&copy; 2026 Diego Guevara - Derechos reservados.</p>
+        </footer>
+    </div>
+    
+    <script>
+        // Lógica de Animaciones al hacer scroll
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('visible'); }
+                else { entry.target.classList.remove('visible'); }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.scroll-animate').forEach(el => { observer.observe(el); });
+
+        // Lógica para Ocultar / Mostrar la Barra Lateral
+        const toggleBtn = document.getElementById('toggleSidebar');
+        const sidebar = document.getElementById('sidebar');
+        const content = document.getElementById('mainContent');
+        const toggleIcon = document.getElementById('toggleIcon');
+
+        toggleBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('collapsed');
+            content.classList.toggle('expanded');
+            
+            // Cambia el icono de la flecha dependiendo de si está oculto o desplegado
+            if (sidebar.classList.contains('collapsed')) {
+                toggleIcon.className = 'fa-solid fa-chevron-right';
+            } else {
+                toggleIcon.className = 'fa-solid fa-chevron-left';
+            }
+        });
+    </script>
+</body>
+</html>

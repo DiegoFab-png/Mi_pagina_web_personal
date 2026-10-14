@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Perfil profesional y académico de Anghelo Rico.">
+    <title>Sobre mí | Diego Guevara</title>
+    
+    <!-- Favicon y CSS externo -->
+    <link rel="icon" type="image/x-icon" href="img/logo.ico">
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <aside id="sidebar">
+        <!-- BOTÓN PEGADO AL BORDE DEL MENÚ -->
+        <button id="toggleSidebar" class="btn-toggle-sidebar" title="Ocultar/Mostrar menú">
+            <i class="fa-solid fa-chevron-left" id="toggleIcon"></i>
+        </button>
+
+        <h2><i class="fa-solid fa-user-graduate"></i> Diego Guevara</h2>
+        <nav>
+            <a href="index.html"><i class="fa-solid fa-house"></i> Inicio</a>
+            <a href="sobre.html" class="active"><i class="fa-solid fa-address-card"></i> Sobre mí</a>
+            <a href="proyectos.html"><i class="fa-solid fa-laptop-code"></i> Proyectos</a>
+            <a href="formulario.html"><i class="fa-solid fa-file-lines"></i> Formulario</a>
+            <a href="blog.html"><i class="fa-solid fa-blog"></i> Blog</a>
+            <a href="galeria.html"><i class="fa-solid fa-image"></i> Galería</a>
+            <a href="contacto.html"><i class="fa-solid fa-envelope"></i> Contacto</a>
+        </nav>
+    </aside>
+    
+    <div class="content" id="mainContent">
+        <header class="scroll-animate">
+            <h1><i class="fa-solid fa-user-gear"></i> Sobre mí</h1>
+            <p>Conoce mi trayectoria, mis habilidades y pasión por la tecnología</p>
+        </header>
+        
+        <main class="scroll-animate">
+            <h2 class="section-title"><i class="fa-solid fa-user-pen"></i> Resumen estudiantil</h2>
+            <div class="summary-text">
+                Soy estudiante del <strong>Rep. Federal de Alemania</strong> y me interesa todo sobre la tecnología, la programación y el desarrollo de páginas web, actualmente estoy aprendiendo y mejorando mis conocimientos en diferentes herramientas y lenguajes de programación. Me gusta realizar proyectos que me permitan poner en práctica lo aprendido y seguir desarrollándome en el área de tecnología.
+            </div>
+
+            <h2 class="section-title"><i class="fa-solid fa-bullseye"></i> Áreas de Interés y Especialidad</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fa-solid fa-code"></i>
+                    <h3>Programación</h3>
+                    <p>Desarrollo de programas y lógica de software.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-brands fa-html5"></i>
+                    <h3>Desarrollo Web</h3>
+                    <p>Creación de páginas web utilizando HTML, CSS y JS.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-solid fa-database"></i>
+                    <h3>Bases de Datos</h3>
+                    <p>Diseño, creación y administración de bases de datos.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-solid fa-network-wired"></i>
+                    <h3>Redes</h3>
+                    <p>Configuración y aprendizaje de redes con Packet Tracer.</p>
+                </div>
+            </div>
+
+            <h2 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Trayectoria Académica</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Etapa / Rol</th>
+                            <th>Institución</th>
+                            <th>Área / Especialidad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><i class="fa-solid fa-user-graduate" style="color: var(--accent); margin-right: 8px;"></i> Estudiante</td>
+                            <td>Instituto de Educación Superior</td>
+                            <td>Desarrollo de Sistemas</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa-solid fa-laptop-code" style="color: var(--accent); margin-right: 8px;"></i> Estudiante</td>
+                            <td>Formación Académica</td>
+                            <td>Programación y Desarrollo Web</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+        
+        <footer>
+            <p>&copy; 2026 Diego Guevara - Derechos reservados.</p>
+        </footer>
+    </div>
+    
+    <script>
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('visible'); }
+                else { entry.target.classList.remove('visible'); }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.scroll-animate').forEach(el => { observer.observe(el); });
+
+                // Lógica para Ocultar / Mostrar la Barra Lateral
+        const toggleBtn = document.getElementById('toggleSidebar');
+        const sidebar = document.getElementById('sidebar');
+        const content = document.getElementById('mainContent');
+        const toggleIcon = document.getElementById('toggleIcon');
+
+        toggleBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('collapsed');
+            content.classList.toggle('expanded');
+            
+            // Cambia el icono de la flecha dependiendo de si está oculto o desplegado
+            if (sidebar.classList.contains('collapsed')) {
+                toggleIcon.className = 'fa-solid fa-chevron-right';
+            } else {
+                toggleIcon.className = 'fa-solid fa-chevron-left';
+            }
+        });
+    </script>
+</body>
+</html>
